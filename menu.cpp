@@ -10,23 +10,15 @@ menu::menu()
   choice=1;
   menu1=loadimg("menu/menu.png");
   animate=loadimg("menu/marker.png");
-  /*  cursor[0].h=100;
-  cursor[0].w=100;
+  cursor[0].h=20;
+  cursor[0].w=20;
   cursor[0].x=0;
   cursor[0].y=0;
-  cursor[1].h=100;
-  cursor[1].w=100;
-  cursor[1].x=100;
-  cursor[1].y=0;
-  menuan[0].h=960;
-  menuan[0].w=1280;
+  menuan[0].h=1024;
+  menuan[0].w=768;
   menuan[0].x=0;
   menuan[0].y=0;
-  menuan[1].h=960;
-  menuan[1].w=1280;
-  menuan[1].x=1280;
-  menuan[1].y=0;  
-  frame=0;*/
+  frame=0;
   cur_x=280;
   cur_y=290;
 }
@@ -38,7 +30,7 @@ menu::~menu()
 
 void menu::paintmenu()
 {
-  /*int tick=SDL_GetTicks();
+  int tick=SDL_GetTicks();
   if(tick<=gLastTick)
     {
       SDL_Delay(1);
@@ -49,12 +41,12 @@ void menu::paintmenu()
       while(SDL_PollEvent(&event))
 	move_curs();
       gLastTick += 1000 / 4;
-      }*/
+    }
   if(SDL_MUSTLOCK(gScreen))
     if(SDL_LockSurface(gScreen) < 0) 
       return;
-  //  if(frame>1)frame=0;
-  apply_surface(0,0,menu1,gScreen); 
+  //if(frame>1)frame=0;
+  apply_surface(0,0,menu1,gScreen/*,&menuan[0]*/); 
   show_curs();
   //frame++;
   if (SDL_MUSTLOCK(gScreen)) 
@@ -101,10 +93,10 @@ void menu::show_curs()
       choice=1;
       cur_y=290*RATIO;
     }
-  if(cur_y>640*RATIO)
+  if(cur_y>570*RATIO)
     {
       choice=5;
-      cur_y=640*RATIO;
+      cur_y=570*RATIO;
     }
   apply_surface(cur_x,cur_y,animate,gScreen);
 }

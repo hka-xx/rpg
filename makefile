@@ -1,7 +1,7 @@
 lib = -lSDL_image -lSDL_mixer -lSDL_gfx
 sdl =  `sdl-config --cflags --libs`
 rpg : main.o globals.o functions.o map.o graphic.o menu.o
-	g++ -o rpg $(sdl) main.o globals.o functions.o map.o graphic.o menu.o $(lib)
+	g++ -o rpg $(sdl) main.o globals.o functions.o map.o graphic.o menu.o $(lib) -g
 main.o : main.cpp functions.hpp map.hpp graphic.hpp globals.hpp menu.hpp
 	g++ -c main.cpp
 globals.o : globals.cpp globals.hpp graphic.hpp map.hpp menu.hpp
